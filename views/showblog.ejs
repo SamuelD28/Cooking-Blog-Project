@@ -1,0 +1,72 @@
+<!--  Auteur: Samuel Dubé
+      Date de création: 2018/01/03
+      Date de dernière: ******
+      Description: Fichier html principal pour le projet blog
+-->
+
+<!DOCTYPE html>
+
+<html>
+    <% include partials/head %>
+    <body>
+        <% include partials/header %>
+
+        <section class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 mx-auto page-container">
+                    <% blogs.forEach(function(blog){ %>
+                        <img class="img-fluid"  style="width: 100%" src="/<%=blog.img %>">
+                         <!--Header-->
+                        <div class="container-fluid page-header">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div>
+                                        <p class="page-title"><%= blog.title %> <a class="ui article-cat tag label"><%= blog.cat %></a></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div><em><i class="icon user"></i>by <%= blog.author %></em></div>
+                                    <div><i class="icon calendar"></i><b>28 Septembre, 2017</b></div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="ui buttons float-right">
+                                        <div class="ui labeled button" tabindex="0">
+                                            <div class="ui red button">
+                                                <i class="heart icon"></i> Likes
+                                            </div>
+                                            <a class="ui basic red left pointing label">
+                                                 1,048
+                                            </a>
+                                            </div>
+                                        <div class="ui basic orange button "><i class="icon share alternate"></i> Share</div>
+                                        <div class="ui basic purple button "><i class="icon plus"></i> Save</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Header-->
+                        <hr/>
+                        <div class="page-paragraph">
+                            <h2>Description</h2>
+                            <p> <%= blog.desc %></p>
+                            <p> <%- blog.inst %></p>
+                        </div>
+                        <hr/>
+                        <div class="page-footer">
+                            <a href="/">
+                                <div class="ui   button "><i class="icon left chevron"></i> Home</div>
+                            </a>
+                            <a href="/home/<%=blog._id%>/edit">
+                                <div class="ui button secondary right floated">
+                                    <i class="icon write"></i>Edit
+                                </div>
+                            </a>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </section>
+    </body>
+    <% include partials/footer %>
+    <% include partials/script %>
+</html>

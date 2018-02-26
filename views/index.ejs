@@ -1,0 +1,112 @@
+<!--  Auteur: Samuel Dubé
+      Date de création: 2018/01/03
+      Date de dernière: ******
+      Description: Fichier html principal pour le projet blog
+-->
+
+<!DOCTYPE html>
+
+<html>
+    <% include partials/head %>
+    <body>
+        <% include partials/header %>
+
+        <section class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <h1 class="text-center">Guides</h1>
+                    <hr />
+                    <% blogs.forEach(function(blog){
+                    if(blog.cat == "Guide"){ %>
+                        <div class="container spacing">
+                            <a class="article-anchor" href="/home/<%= blog._id%>">
+                                <div class="row article-container">
+                                    <div class="col-lg-4 col-md-12 article-image-container">
+                                        <p class="article-image hidden-md-down" style="background-image: url('<%= blog.img %>');"></p>
+                                        <img class="img-fluid article-image hidden-lg-up" src="<%= blog.img %>">
+                                    </div>
+                                    <div class="col-lg-8 col-md-12">
+                                        <h4 class=""><%= blog.title %></h4>
+                                        <span class="cinema"><em>by <%= blog.author %></em></span>
+                                        <p> <%= blog.desc.substring(0 , 100) %>...</p>
+                                        <!--Buttons Group-->
+                                        <div class="row no-gutters">
+                                            <div class="ui button basic article-cat">
+                                                <i class="icon tag"></i> <%= blog.cat %>
+                                            </div>
+                                            <div class="ui button labeled" tabindex="0">
+                                                <div class="ui button red">
+                                                    <i class="heart icon"></i>
+                                                </div>
+                                                <span class="ui basic red left pointing label">
+                                                    1,048
+                                                </span>
+                                            </div>
+                                            <div class="ui button labeled" tabindex="0">
+                                                <div class="ui button blue">
+                                                    <i class="icon share alternate"></i>
+                                                </div>
+                                                <span class="ui basic blue left pointing label">
+                                                    163
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!-- -->
+                                    </div>
+                                </div>
+                            <a/>
+                        </div>
+                    <% }
+                    }) %>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <h1 class="text-center">Recipe</h1>
+                    <hr />
+                    <% blogs.forEach(function(blog){
+                    if(blog.cat == "Recipe"){ %>
+                        <div class="container spacing">
+                            <a class="article-anchor" href="/home/<%= blog._id%>">
+                                <div class="row article-container">
+                                    <div class="col-4 article-image-container">
+                                        <p class="article-image" style="background-image: url('<%= blog.img %>');"></p>
+                                    </div>
+                                    <div class="col-8">
+                                        <h4 class=""><%= blog.title %></h4>
+                                        <span class="cinema"><em>by <%= blog.author %></em></span>
+                                        <p> <%= blog.desc.substring(0 , 100) %>...</p>
+                                        <!--Buttons Group-->
+                                        <div class="row no-gutters">
+                                            <div class="ui button basic article-cat">
+                                                <i class="icon book"></i> <%= blog.cat %>
+                                            </div>
+                                            <div class="ui button labeled" tabindex="0">
+                                                <div class="ui button red">
+                                                    <i class="heart icon"></i>
+                                                </div>
+                                                <span class="ui basic red left pointing label">
+                                                    1,048
+                                                </span>
+                                            </div>
+                                            <div class="ui button labeled" tabindex="0">
+                                                <div class="ui button blue">
+                                                    <i class="icon share alternate"></i>
+                                                </div>
+                                                <span class="ui basic blue left pointing label">
+                                                    163
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <!-- -->
+                                    </div>
+                                </div>
+                            <a/>
+                        </div>
+                    <% }
+                    }) %>
+                </div>
+            </div>
+        </section>
+    </body>
+    <% include partials/footer %>
+    <% include partials/script %>
+</html>

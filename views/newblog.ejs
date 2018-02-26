@@ -1,0 +1,61 @@
+<!--  Auteur: Samuel Dubé
+      Date de création: 2018/01/03
+      Date de dernière: ******
+      Description: Fichier html principal pour le projet blog
+-->
+
+<!DOCTYPE html>
+
+<html>
+    <% include partials/head %>
+    <body>
+        <% include partials/header %>
+
+        <section class="container-fluid">
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    <form class="container-fluid" action="/home" method="POST" enctype="multipart/data">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input class="form-control" type="text" name="blog[title]" placeholder="Name of the article">
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-group mr-auto">
+                                <input class="form-control" type="text" name="blog[author]" placeholder="Author">
+                            </div>
+                            <div class="form-group">
+                                <select name="blog[cat]" placeholder="Image" class="form-control">
+                                    <option selected hidden disable>*Categories</option>
+                                    <option>Guide</option>
+                                    <option>Recipe</option>
+                                    <option>Kitchen equipement</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Tumbnail Image</label>
+                            <input class="form-control" type="file" name="blog[img]" placeholder="Image">
+                        </div>
+
+                        <label>Description</label>
+                        <div class="form-group">
+                            <textarea rows="5" name="blog[desc]" class="form-control"></textarea>
+                        </div>
+
+                        <label>Instructions</label>
+                        <div class="form-group">
+                            <textarea name="blog[inst]"></textarea>
+                            <script>
+                			    CKEDITOR.replace( 'blog[inst]' );
+                		    </script>
+                        </div>
+
+                        <hr />
+                        <button type="submit" class="btn btn-primary btn-lg">Publish</button>
+                    </form>
+            </div>
+        </section>
+    </body>
+    <% include partials/footer %>
+    <% include partials/script %>
+</html>
